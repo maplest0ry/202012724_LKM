@@ -97,10 +97,6 @@ npm install
 |     URL     | /country         |
 | 요청 메소드 | POST             |
 | 콘텐츠 타입 | application/json |
-| 메세지 구조 | id          |
-|             | name          |
-|             | language             |
-|             | capital         |
 
 ##### 요청 메시지
 
@@ -139,10 +135,6 @@ npm install
 |   URL 예    | /country         |
 | 요청 메소드 | PUT              |
 | 콘텐츠 타입 | application/json |
-| 메세지 구조 | id          |
-|             | name          |
-|             | language             |
-|             | capital         |
 
 ##### 요청 메시지
 
