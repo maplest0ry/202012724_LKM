@@ -103,9 +103,9 @@ npm install
 ``` json
 {
     "id":4,
-    "name": "미국",
-    "language": "영어",
-    "capital": "워싱턴 D.C."
+    "name": "캐나다",
+    "language": "영어, 프랑스어",
+    "capital": "오타와"
 }
 ```
 
@@ -116,9 +116,9 @@ npm install
     "msg": "success",
     "data": {
     "id":4,
-    "name": "미국",
-    "language": "영어",
-    "capital": "워싱턴 D.C."
+    "name": "캐나다",
+    "language": "영어, 프랑스어",
+    "capital": "오타와"
 }
 }
 ```
