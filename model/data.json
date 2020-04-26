@@ -1,0 +1,19 @@
+[{  
+    "id":0,
+    "name": "대한민국",
+    "language": "한국어",
+    "capital": "서울"
+},
+{
+    "id":1,
+    "name": "미국",
+    "language": "영어",
+    "capital": "워싱턴 D.C."
+},
+{
+    "id": 2,
+    "name": "일본",
+    "language": "일본어",
+    "capital": "도쿄"
+}
+]
