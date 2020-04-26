@@ -104,7 +104,7 @@ npm install
 {
     "id":4,
     "name": "캐나다",
-    "language": "영어, 프랑스어",
+    "language": "영어, 불어",
     "capital": "오타와"
 }
 ```
