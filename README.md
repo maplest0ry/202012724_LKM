@@ -102,7 +102,7 @@ npm install
 
 ``` json
 {
-    "id":2,
+    "id":4,
     "name": "미국",
     "language": "영어",
     "capital": "워싱턴 D.C."
@@ -115,11 +115,11 @@ npm install
 {
     "msg": "success",
     "data": {
-        "id": 2,
-        "name": "일본",
-        "language": "일본어",
-        "capital": "도쿄"
-    }
+    "id":4,
+    "name": "미국",
+    "language": "영어",
+    "capital": "워싱턴 D.C."
+}
 }
 ```
 
@@ -140,10 +140,10 @@ npm install
 
 ``` json
 {
-    "id":2,
-    "name": "미국",
-    "language": "영어",
-    "capital": "워싱턴 D.C."
+    "id":4,
+    "name": "캐나다",
+    "language": "영어, 프랑스어",
+    "capital": "오타와"
 }
 ```
 
@@ -153,10 +153,10 @@ npm install
 
 ```  json
 {
-    "id":2,
-    "name": "미국",
-    "language": "영어",
-    "capital": "워싱턴 D.C."
+    "id":4,
+    "name": "캐나다",
+    "language": "영어, 프랑스어",
+    "capital": "오타와"
 }
 
 ```
