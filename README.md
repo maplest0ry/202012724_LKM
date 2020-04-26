@@ -7,20 +7,14 @@ npm install
 ```
 
 ##  Contents
-- [국가 정보 리스트](#국가-정보-리스트)
-- [국가 상세 정보](#국가-상세-정보)
-- [국가 추가](#국가-추가)
-- [국가 수정](#국가-수정)
-- [국가 삭제](#국가-삭제)
-
 
 |       항목       |     URL     | Method  |
 | :--------------: | :---------: | :----: |
-| 국가 정보 리스트 |  /country   |  GET   |
-|  국가 상세 정보  | /country/id |  GET   |
-|    국가 추가     |  /country   |  POST  |
-|    국가 수정     |  /country   |  PUT   |
-|    국가 삭제     | /country/id | DELETE |
+| [국가 정보 리스트](#국가-정보-리스트) |  /country   |  GET   |
+|  [국가 상세 정보](#국가-상세-정보)  | /country/id |  GET   |
+|    [국가 추가](#국가-추가)     |  /country   |  POST  |
+|    [국가 수정](#국가-수정)     |  /country   |  PUT   |
+|    [국가 삭제](#국가-삭제)     | /country/id | DELETE |
 
 ---
 
