@@ -14,7 +14,7 @@ npm install
 - [국가 삭제](#국가-삭제)
 
 
-|       항목       |     URL     | Metho  |
+|       항목       |     URL     | Method  |
 | :--------------: | :---------: | :----: |
 | 국가 정보 리스트 |  /country   |  GET   |
 |  국가 상세 정보  | /country/id |  GET   |
