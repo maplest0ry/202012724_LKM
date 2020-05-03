@@ -1,4 +1,4 @@
-# 202012724 이규민
+# 202012724 이규민 5/3 update
 
 ## 설치
 
@@ -7,14 +7,20 @@ npm install
 ```
 
 ##  Contents
+- [국가 정보 리스트](#국가-정보-리스트)
+- [국가 상세 정보](#국가-상세-정보)
+- [국가 추가](#국가-추가)
+- [국가 수정](#국가-수정)
+- [국가 삭제](#국가-삭제)
 
-|       항목       |     URL     | Method  |
+
+|       항목       |     URL     | Metho  |
 | :--------------: | :---------: | :----: |
-| [국가 정보 리스트](#국가-정보-리스트) |  /country   |  GET   |
-|  [국가 상세 정보](#국가-상세-정보)  | /country/id |  GET   |
-|    [국가 추가](#국가-추가)     |  /country   |  POST  |
-|    [국가 수정](#국가-수정)     |  /country   |  PUT   |
-|    [국가 삭제](#국가-삭제)     | /country/id | DELETE |
+| 국가 정보 리스트 |  /country   |  GET   |
+|  국가 상세 정보  | /country/id |  GET   |
+|    국가 추가     |  /country/add   |  POST  |
+|    국가 수정     |  /country/edit/id   |  POST   |
+|    국가 삭제     | /country/delete/id | POST |
 
 ---
 
@@ -28,6 +34,14 @@ npm install
 |   URL 예    | /country         |
 | 요청 메소드 | GET              |
 
+#### 응답
+
+| 컨텐츠 타입 | JSON  |          |         |
+| ----------- | ----- | -------- | ------- |
+|             | data  | ID       | 인덱스  |
+|             |       | name  | 국가명  |
+|             |       | capital  | 수도    |
+|             |       | language     | 언어    |
 
 ##### 응답 메세지
 
@@ -86,20 +100,24 @@ npm install
 
 #### 요청
 
-|    업무     | 국가 정보 리스트 |
+|    업무     | 국가 추가 |
 | :---------: | ---------------- |
-|     URL     | /country         |
+|     URL     | /country/add         |
 | 요청 메소드 | POST             |
 | 콘텐츠 타입 | application/json |
+| 메세지 구조 | id          |
+|             | name          |
+|             | language             |
+|             | capital         |
 
 ##### 요청 메시지
 
 ``` json
 {
-    "id":4,
-    "name": "캐나다",
-    "language": "영어, 불어",
-    "capital": "오타와"
+    "id":2,
+    "name": "미국",
+    "language": "영어",
+    "capital": "워싱턴 D.C."
 }
 ```
 
@@ -109,11 +127,11 @@ npm install
 {
     "msg": "success",
     "data": {
-    "id":4,
-    "name": "캐나다",
-    "language": "영어, 프랑스어",
-    "capital": "오타와"
-}
+        "id": 2,
+        "name": "일본",
+        "language": "일본어",
+        "capital": "도쿄"
+    }
 }
 ```
 
@@ -123,21 +141,25 @@ npm install
 
 #### 요청
 
-|    업무     | 국가 정보 리스트 |
+|    업무     | 국가 수정 |
 | :---------: | ---------------- |
-|     URL     | /country         |
-|   URL 예    | /country         |
+|     URL     | /country/edit/id         |
+|   URL 예    | /country/edit/1         |
 | 요청 메소드 | PUT              |
 | 콘텐츠 타입 | application/json |
+| 메세지 구조 | id          |
+|             | name          |
+|             | language             |
+|             | capital         |
 
 ##### 요청 메시지
 
 ``` json
 {
-    "id":4,
-    "name": "캐나다",
-    "language": "영어, 프랑스어",
-    "capital": "오타와"
+    "id":2,
+    "name": "미국",
+    "language": "영어",
+    "capital": "워싱턴 D.C."
 }
 ```
 
@@ -147,10 +169,10 @@ npm install
 
 ```  json
 {
-    "id":4,
-    "name": "캐나다",
-    "language": "영어, 프랑스어",
-    "capital": "오타와"
+    "id":2,
+    "name": "미국",
+    "language": "영어",
+    "capital": "워싱턴 D.C."
 }
 
 ```
@@ -161,11 +183,11 @@ npm install
 
 #### 요청
 
-|    업무     | 국가 정보 리스트 |              |
+|    업무     | 국가 삭제 |              |
 | :---------: | ---------------- | ------------ |
-|     URL     | /country/ID      | ID : 국가 ID |
-|   URL 예    | /country/2      |              |
-| 요청 메소드 | DELETE           |              |
+|     URL     | /country/delete/ID      | ID : 국가 ID |
+|   URL 예    | /country/delete/2      |              |
+| 요청 메소드 | POST           |              |
 
 
 ##### 응답 메세지 예

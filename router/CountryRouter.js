@@ -2,32 +2,26 @@ const express = require('express');
 const router = express.Router();
 const countryModel = require('../model/CountryModel');
 
+
 router.get('/country', showcountryList);
-router.get('/country/:id',showCountryDetail);
-router.post('/country', addcountry);
-router.put('/country', updatecountry);
-router.delete('/country/:id', deletecountry);
+router.get('/country/:id',showCountryDetailView);
+router.get('/country/add',showCountryAddView);
+router.post('/country/add', addcountry);
+router.get('/country/edit/:id',showCountryEditView);
+router.post('/country/edit', updatecountry);
+router.post('/country/delete/:id', deletecountry);
 
 
 module.exports = router;
 
 function showcountryList(req, res) {
     const countryList = countryModel.showcountryList();
-    const result = { data:countryList, count:countryList.legth };
-    res.send(result);
+    // const result = { data:countryList, count:countryList.length };
+    res.render('CountryListView',{ data:countryList, count:countryList.length });
 }
 
-async function showCountryDetail(req, res) {
-    try {
-        const id = req.params.id;
-        console.log('country: ', id);
-        const info = await countryModel.detailCountry(id);
-        res.send(info);
-    } 
-    catch (error) {
-        console.log('Can not find, 404');
-        res.status(error.code).send({msg:error.msg});
-    }
+function showCountryAddView(req, res) {
+        res.render('CountryAddView');    
 }
 
 async function addcountry(req, res) {
@@ -40,13 +34,43 @@ async function addcountry(req, res) {
     }
 }
 
+async function showCountryDetailView(req, res) {
+    try {
+        const id = req.params.id;
+        console.log('country: ', id);
+        const info = await countryModel.detailCountry(id);
+        res.render('CountryDetailView',{info:info});
+        // res.send(info);
+        
+    } 
+    catch (error) {
+        console.log('Can not find, 404');
+        res.status(error.code).send({msg:error.msg});
+    }
+}
+
+
+async function showCountryEditView(req, res) {
+    try {
+        const id = req.params.id;
+        console.log('country: ', id);
+        const info = await countryModel.detailCountry(id);
+        res.render('CountryEditView',{info:info});
+        
+    } 
+    catch (error) {
+        console.log('Can not find, 404');
+        res.status(error.code).send({msg:error.msg});
+    }
+}
+
 async function updatecountry(req, res) {
     
     const data = req.body;
-
-    const name = data.name;
-    const language = data.language;
-    const capital = data.capital;
+    console.log(req.body);
+    const name = req.body.name;
+    const language = req.body.language;
+    const capital = req.body.capital;
 
     if ( !name || !language || !capital) {
         res.status(400).send({error:'Fail'});
@@ -55,7 +79,9 @@ async function updatecountry(req, res) {
 
     try {
         const result = await countryModel.updatecountry(data);
-        res.send({msg:'Updated country' + data.name, data:result});
+        const countryList = countryModel.showcountryList();
+        res.render('CountryListView',{ data:countryList, count:countryList.length });
+        // res.send({msg:'Updated country' + data.name, data:result});
     }
     catch ( error ) {
         console.error(error);
@@ -63,14 +89,14 @@ async function updatecountry(req, res) {
     }
 }
 
-
 async function deletecountry(req, res) {
-
+    
     try {
         const id = req.params.id;
         console.log('Deleted country : ', id);
         const result = await countryModel.deletecountry(id);
-        res.send({msg:'Deleted country', data:result});
+        const countryList = countryModel.showcountryList();
+        res.render('CountryListView',{ data:countryList, count:countryList.length });
     }
     catch ( error ) {
         res.status(400).send({error:'Fail'});

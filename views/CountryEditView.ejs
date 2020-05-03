@@ -1,0 +1,22 @@
+<html>
+<head>
+   <meta charset="UTF-8" />
+    <title>CountryEdit</title>
+</head>
+<body>
+    <h1>CountryEdit</h1> 
+    <form action="/country/edit" method="post" >
+<pre>
+id : <input type="text" name="id" value="<%= info.id %>" style="width:100px;" readonly></br>   
+name    : <input type="text" name="name" value="<%= info.name %>" style="width:100px;"></br></br>
+language : <input type="text" name="language" value="<%= info.language %>" style="width:100px;"></br></br>
+capital  : <input type="text" name="capital" value="<%= info.capital %>" style="width:100px;"></br></br>
+
+<p>
+<input type="submit" value="Edit">
+  <input type="button" value="back" onclick="history.back(-1)">
+</p>
+</pre>
+    </form> 
+</body>
+</html>
