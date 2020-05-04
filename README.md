@@ -7,24 +7,19 @@ npm install
 ```
 
 ##  Contents
-- [국가 정보 리스트](#국가-정보-리스트)
-- [국가 상세 정보](#국가-상세-정보)
-- [국가 추가](#국가-추가)
-- [국가 수정](#국가-수정)
-- [국가 삭제](#국가-삭제)
 
 
 |       항목       |     URL     | Metho  |
 | :--------------: | :---------: | :----: |
-| 국가 정보 리스트 |  /country   |  GET   |
-|  국가 상세 정보  | /country/id |  GET   |
-|    국가 추가     |  /country/add   |  POST  |
-|    국가 수정     |  /country/edit/id   |  POST   |
-|    국가 삭제     | /country/delete/id | POST |
+| [국가 리스트](#국가-정보-리스트) |  /country   |  GET   |
+|  [국가 상세 정보](#국가-상세-정보)  | /country/id |  GET   |
+|    [국가 추가](#국가-추가)     |  /country/add   |  POST  |
+|    [국가 수정](#국가-수정)     |  /country/edit/id   |  POST   |
+|    [국가 삭제](#국가-삭제)     | /country/delete/id | POST |
 
 ---
 
-### 국가 정보 리스트
+### 국가 리스트
 
 #### 요청
 
@@ -145,7 +140,7 @@ npm install
 | :---------: | ---------------- |
 |     URL     | /country/edit/id         |
 |   URL 예    | /country/edit/1         |
-| 요청 메소드 | PUT              |
+| 요청 메소드 | POST         |
 | 콘텐츠 타입 | application/json |
 | 메세지 구조 | id          |
 |             | name          |
