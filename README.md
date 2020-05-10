@@ -1,10 +1,14 @@
-# 202012724 이규민 5/3 update
+# 202012724 이규민
+
+## update List
+5/10 DB연동부분 추가
 
 ## 설치
 
 ``` 
 npm install
 ```
+
 
 ##  Contents
 
