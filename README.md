@@ -1,6 +1,6 @@
 # 202012724 이규민
 ###update List
-5/10 DB연동 추가
+5/3  frontEndView 추가
 ## 설치
 
 ``` 
