@@ -3,8 +3,8 @@ const router = express.Router();
 const countryModel = require('../model/CountryModel');
 
 
-router.get('/country', showcountryList);
-router.get('/country/:id',showCountryDetailView);
+// router.get('/country', showcountryList);
+// router.get('/country/:id',showCountryDetailView);
 router.get('/country/add',showCountryAddView);
 router.post('/country/add', addcountry);
 router.get('/country/edit/:id',showCountryEditView);
@@ -14,11 +14,45 @@ router.post('/country/delete/:id', deletecountry);
 
 module.exports = router;
 
-function showcountryList(req, res) {
-    const countryList = countryModel.showcountryList();
-    // const result = { data:countryList, count:countryList.length };
-    res.render('CountryListView',{ data:countryList, count:countryList.length });
-}
+// function showcountryList(req, res) {
+//     const countryList = countryModel.showcountryList();
+//     // const result = { data:countryList, count:countryList.length };
+//     res.render('CountryListView',{ data:countryList, count:countryList.length });
+// }
+
+router.get('/country', async (req, res) => {
+    const countryList = await countryModel.showcountryList();
+    res.render('CountryListView', {data:countryList, count:countryList.length});
+});
+
+// async function showCountryDetailView(req, res) {
+//     try {
+//         const id = req.params.id;
+//         console.log('country: ', id);
+//         const info = await countryModel.detailCountry(id);
+//         res.render('CountryDetailView',{info:info});
+//         // res.send(info);
+        
+//     } 
+//     catch (error) {
+//         console.log('Can not find, 404');
+//         res.status(error.code).send({msg:error.msg});
+//     }
+// }
+
+router.get('/country/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        console.log('country : ', id);
+        const info = await countryModel.detailCountry(id);
+
+        res.render('CountryDetailView', {info:info});
+    }
+    catch ( error ) {
+        console.log('Can not find, 404');
+        res.status(error.code).send({msg:error.msg});
+    }
+});
 
 function showCountryAddView(req, res) {
         res.render('CountryAddView');    
@@ -28,27 +62,13 @@ async function addcountry(req, res) {
     const data = req.body
     try {
         const result = await countryModel.addcountry(data);
-        res.send({msg:'success', data:result});
+        res.render('CheckCompleteView',{msg:'add success'});
+        // res.send({msg:'success', data:result});
     } catch (error) {
+        // res.render('CheckCompleteView',{msg:'add fail'});
         res.status(500).send(error.msg);
     }
 }
-
-async function showCountryDetailView(req, res) {
-    try {
-        const id = req.params.id;
-        console.log('country: ', id);
-        const info = await countryModel.detailCountry(id);
-        res.render('CountryDetailView',{info:info});
-        // res.send(info);
-        
-    } 
-    catch (error) {
-        console.log('Can not find, 404');
-        res.status(error.code).send({msg:error.msg});
-    }
-}
-
 
 async function showCountryEditView(req, res) {
     try {
@@ -56,7 +76,6 @@ async function showCountryEditView(req, res) {
         console.log('country: ', id);
         const info = await countryModel.detailCountry(id);
         res.render('CountryEditView',{info:info});
-        
     } 
     catch (error) {
         console.log('Can not find, 404');
@@ -79,9 +98,8 @@ async function updatecountry(req, res) {
 
     try {
         const result = await countryModel.updatecountry(data);
-        const countryList = countryModel.showcountryList();
-        res.render('CountryListView',{ data:countryList, count:countryList.length });
         // res.send({msg:'Updated country' + data.name, data:result});
+        res.render('CheckCompleteView',{msg:'update success'});
     }
     catch ( error ) {
         console.error(error);
@@ -95,8 +113,7 @@ async function deletecountry(req, res) {
         const id = req.params.id;
         console.log('Deleted country : ', id);
         const result = await countryModel.deletecountry(id);
-        const countryList = countryModel.showcountryList();
-        res.render('CountryListView',{ data:countryList, count:countryList.length });
+        res.render('CheckCompleteView',{msg: 'delete success'});
     }
     catch ( error ) {
         res.status(400).send({error:'Fail'});
