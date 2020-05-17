@@ -1,0 +1,21 @@
+<html>
+<head><title>CountryDetail</title></head>
+<body>
+    <h1>CountryDetail</h1>
+        <ul><li>id : <%=info.id %></li>
+            <li>name : <%=info.name %></li>
+            <li>language : <%=info.language %></li>
+            <li>capital : <%=info.capital %></li>
+        </ul>
+        
+        <form name="detail" method="post" action="/country/delete/<%=info.id %>">
+        <input type="hidden" name="id" value="<%= info.id %>">
+        <input type="button" value="back" onclick="history.back(-1)">
+        <input type="button" value="Edit" onclick="location.href='/country/edit/<%= info.id %>'">
+        <input type="submit" value="Delete">
+        
+        </form>
+        
+
+</body>
+    </html>
