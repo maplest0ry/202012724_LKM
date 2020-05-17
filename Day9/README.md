@@ -1,7 +1,6 @@
 # 202012724 이규민
 
 ## update List
-5/10 DB연동부분 추가
 5/17 sequelize 
 
 ## 설치
