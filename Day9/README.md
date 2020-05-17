@@ -2,11 +2,14 @@
 
 ## update List
 5/10 DB연동부분 추가
+5/17 sequelize 
 
 ## 설치
 
 ``` 
 npm install
+npm sequelize
+npm mysql
 ```
 
 
