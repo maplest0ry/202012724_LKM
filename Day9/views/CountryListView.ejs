@@ -1,0 +1,15 @@
+<html>
+<head><title>countryList</title></head>
+<body>
+    <h1>CountryList</h1>
+    <input type="button" value="add" onclick="location.href='/country/add'">
+    <% data.forEach(function(item) {%>
+        <ul><li>id : <a href='/country/<%=item.id %>'> <%=item.id %></a></li>
+            <li>name : <%=item.name %></li>
+            <li>language : <%=item.language %></li>
+            <li>capital : <%=item.capital %></li>
+        </ul>
+    <%}) 
+    %>
+</body>
+    </html>
