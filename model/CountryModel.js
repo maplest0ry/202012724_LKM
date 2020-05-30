@@ -1,70 +1,115 @@
 const fs = require('fs');
+
+const Sequelize = require('Sequelize');
+const sequelize = new Sequelize('example', 'dev', 'secret', { 
+     dialect: 'mysql', host: '127.0.0.1'
+});
+
+class Countrys extends Sequelize.Model { }
+Countrys.init({
+        id: { 
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        name: Sequelize.STRING,
+        language: Sequelize.STRING,
+        capital: Sequelize.STRING
+    }, {tableName:'country', sequelize, timestamps: false});
+
+
 class Country {
+
     constructor() {
         const data = fs.readFileSync('./model/data.json');
-        this.data = JSON.parse(data);
+        this.countrys = JSON.parse(data);
     }
 
-    showcountryList() {
-        if (this.data) {
-            return this.data;
+    async oneDataInsert(country) {
+        try {
+            let countryData = await Countrys.create({ 
+                            name : country.name, 
+                            language : country.platform, 
+                            capital : country.capital
+                        }, {logging:false});
+            const newData = countryData.dataValues;
+
+            return newData;
+        } catch (error) {
+            console.error(error);
         }
     }
-    detailCountry(id) {
-        return new Promise((resolve, reject) => {
-            for (var object of this.data) {
-                if (object.id == id) {
-                    resolve(object);
-                    return;
-                }
-            }
-            reject({ msg: _id + ' not found', code: 404 });
-        });
+
+    async allDataInsert() {
+        const data = fs.readFileSync('./model/data.json');
+        const countryData = JSON.parse(data);
+        for (var country of countryData ) {
+            await this.oneDataInsert(country);
+        }
     }
 
-    addcountry(data) {
-        return new Promise((resolve, reject) => {
-            const idx = this.data[this.data.length - 1].id + 1;
-            const newcountry = {
-                id:idx,
-                name:data.name,
-                language:data.language,
-                capital:data.capital
-            }
-            this.data.push(newcountry);
-            resolve(newcountry);
+    getCountryList = async() => {
+        let returnValue;
+        await Countrys.findAll({})
+        .then( results => {
+            returnValue = results;
+        })
+        .catch( error => {
+            console.error('Error :', error);
         });
+        return returnValue;
     }
 
-    updatecountry(data){
-        return new Promise((resolve, reject) => {
-            for (var object of this.data) {
-                if (object.id == data.id) {
-                    object.name = data.name;
-                    object.language = data.language;
-                    object.capital = data.capital;
-                    console.log(object);
-                    resolve(object);
-                    return;
-                }
-            }
-            reject({ msg: data.name + 'Fail', code: 404 });
-        });
+    addCountry = async(name, language, capital) => {
+        const country = {name, language, capital};
+        try {
+            const returnValue = await this.oneDataInsert(country);
+            console.log(returnValue);
+            return returnValue;
+        } catch (error) {
+            console.error(error);
+        }
     }
 
-    deletecountry(id){
-        return new Promise((resolve, reject) => {
-            for (var object of this.data) {
-                if (object.id == id) {
-                    this.data.splice(object.id,1);
-                    resolve(object.id," Deleted");
-                    return;
-                }
+    getCountryDetail = async(Id) => {
+        try {
+            const ret = await Countrys.findAll({
+                where:{id:Id}
+            });
+
+            if ( ret ) {
+                return ret[0];
             }
-            reject({ msg: id + 'Fail', code: 404 });
-        });
+            else {
+                console.log('데이터 없음');
+            }
+        }
+        catch (error) {
+            console.log('Error :', error);
+        }
     }
 
+    deleteCountry = async(Id) => {
+        try {
+            await Countrys.destroy({where: {id:Id}});
+        } catch (error) {
+            console.error(error);  
+        }
+    }
+
+    updateCountry = async(Id, name, language, capital) => {
+        try {
+            let country = await this.getCountryDetail(Id);
+            country.dataValues.name = !name ? country.name : name;
+            country.dataValues.language = !language ? country.language : language;
+            country.dataValues.capital = !capital ? country.capital : capital;
+
+            let ret = await country.save();
+            return ret;
+        } catch (error) {
+            console.error(error);  
+        }
+    }
 }
 module.exports = new Country();
 
