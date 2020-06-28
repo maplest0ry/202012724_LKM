@@ -1,18 +1,30 @@
-// 익스프레스 설정
-// 미들웨어 설정
-// 라우터 연결
-const bodyParser = require('body-parser');
 const express = require('express');
-
-const app = express(); 
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const app = express();
 
 app.set('views', './views');
 app.set('view engine','ejs');
 
 app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({ extended: false}));
+app.use(cookieParser());
+app.use(session({
+    secret: 'ZEROSUGAR',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 60 * 10000 } // 10분
+}));
 
-const countryRouter = require('./router/CountryRouter'); 
+const countryRouter = require('./routers/country.router');
+const userRouter = require('./routers/user.router');
 app.use(countryRouter);
+app.use(userRouter);
 
-module.exports = app;
+module.exports= app;
+
+
+
+
+

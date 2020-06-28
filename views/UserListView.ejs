@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>UserList</title>
+    </head>
+    <body>
+        <h1>UserList</h1>
+        <% data.forEach(function(item) {%>
+            <ul><li>_id : <%=item._id %></li>
+                <li>email : <%=item.email %></li>
+                <li>password : <%=item.password %></li>
+                <li>name : <%=item.name %></li>
+                <li>birth : <%=item.birth %></li>
+                <li>phone : <%=item.phone %></li>
+            </ul>
+        <%}) %>
+        <input type="button" value="back" onclick="history.back(-1)">
+    </body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "name": "202012724-LKM",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://minkkkjoon@github.com/IDU-SW/202012724-LKM.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IDU-SW/202012724-LKM/issues"
+  },
+  "homepage": "https://github.com/IDU-SW/202012724-LKM#readme",
+  "dependencies": {
+    "aws-sdk": "^2.706.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.26.0",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.22.2",
+    "socket.io": "^2.3.0"
+  }
+}

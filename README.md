@@ -1,14 +1,13 @@
-# 202012724 이규민
+# 202012724-LKM 이규민
 
 ## update List
-5/17 sequelize 
+6/29 final 과제
 
 ## 설치
 
 ``` 
-npm install
-npm sequelize
-npm mysql
+npm install sequelize
+npm install mysql
 ```
 
 
@@ -17,11 +16,11 @@ npm mysql
 
 |       항목       |     URL     | Metho  |
 | :--------------: | :---------: | :----: |
-| [국가 리스트](#국가-정보-리스트) |  /country   |  GET   |
-|  [국가 상세 정보](#국가-상세-정보)  | /country/id |  GET   |
-|    [국가 추가](#국가-추가)     |  /country/add   |  POST  |
-|    [국가 수정](#국가-수정)     |  /country/edit/id   |  POST   |
-|    [국가 삭제](#국가-삭제)     | /country/delete/id | POST |
+| [국가 리스트](#국가-정보-리스트) |  /countrys   |  GET   |
+|  [국가 상세 정보](#국가-상세-정보)  | /countrys/id |  GET   |
+|    [국가 추가](#국가-추가)     |  /countrys/add   |  POST  |
+|    [국가 수정](#국가-수정)     |  /countrys/edit/id   |  POST   |
+|    [국가 삭제](#국가-삭제)     | /countrys/delete/id | POST |
 
 ---
 
@@ -31,8 +30,8 @@ npm mysql
 
 |    업무     | 국가 정보 리스트 |
 | :---------: | ---------------- |
-|     URL     | /country         |
-|   URL 예    | /country         |
+|     URL     | /countrys         |
+|   URL 예    | /countrys         |
 | 요청 메소드 | GET              |
 
 #### 응답
@@ -79,8 +78,8 @@ npm mysql
 
 |    업무     | 국가 정보 리스트 |              |
 | :---------: | ---------------- | ------------ |
-|     URL     | /country/id      | ID : 국가 id |
-|   URL 예    | /country/1       |              |
+|     URL     | /countrys/id      | ID : 국가 id |
+|   URL 예    | /countrys/1       |              |
 | 요청 메소드 | GET              |             |
 
 
@@ -89,7 +88,7 @@ npm mysql
 ```  json
  {
             "id": 1,
-            "country": "미국",
+            "countrys": "미국",
             "capital": "워싱턴 D.C",
             "language": "영어",
         }
@@ -103,7 +102,7 @@ npm mysql
 
 |    업무     | 국가 추가 |
 | :---------: | ---------------- |
-|     URL     | /country/add         |
+|     URL     | /countrys/add         |
 | 요청 메소드 | POST             |
 | 콘텐츠 타입 | application/json |
 | 메세지 구조 | id          |
@@ -144,8 +143,8 @@ npm mysql
 
 |    업무     | 국가 수정 |
 | :---------: | ---------------- |
-|     URL     | /country/edit/id         |
-|   URL 예    | /country/edit/1         |
+|     URL     | /countrys/edit/id         |
+|   URL 예    | /countrys/edit/1         |
 | 요청 메소드 | POST         |
 | 콘텐츠 타입 | application/json |
 | 메세지 구조 | id          |
@@ -186,8 +185,8 @@ npm mysql
 
 |    업무     | 국가 삭제 |              |
 | :---------: | ---------------- | ------------ |
-|     URL     | /country/delete/ID      | ID : 국가 ID |
-|   URL 예    | /country/delete/2      |              |
+|     URL     | /countrys/delete/ID      | ID : 국가 ID |
+|   URL 예    | /countrys/delete/2      |              |
 | 요청 메소드 | POST           |              |
 
 
@@ -195,8 +194,12 @@ npm mysql
 
 ```  json
 {
-    "msg": "Deleted country",
+    "msg": "Deleted countrys",
     "data": 2
 }
 ```
 
+
+###reference 
+202012703-MKJ
+https://github.com/IDU-SW/202012703-MKJ
